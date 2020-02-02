@@ -7,7 +7,10 @@ import java.util.Iterator;
  * to the next node in the list.
  */
 public class SinglyLinkedList<E> implements List<E> {
+	//Reference to the first node in the list
 	private Node<E> head;
+	//Int that stores the amount of nodes in the list
+	private int size=0;
 
 	private static class Node<E> {
 		//Reference to the element stored in this node
@@ -15,20 +18,20 @@ public class SinglyLinkedList<E> implements List<E> {
 		//Reference to the subsequent node in the list
 		private Node<E> next;
 
-		public Node(E e, Node<E> n) {
+		private Node(E e, Node<E> n) {
 			element = e;
 			next = n;
 		}
 
-		public E getElement() {
+		private E getElement() {
 			return this.element;
 		}
 
-		public Node<E> getNext() {
+		private Node<E> getNext() {
 			return this.next;
 		}
 
-		public void setNext(Node<E> N) {
+		private void setNext(Node<E> N) {
 			this.next = N;
 		}
 	}
@@ -40,7 +43,7 @@ public class SinglyLinkedList<E> implements List<E> {
 
 	private class ListIterator implements Iterator<E> {
 		Node<E> curr;
-		public ListIterator() {
+		private ListIterator() {
 			curr = head;
 		}
 
@@ -50,7 +53,7 @@ public class SinglyLinkedList<E> implements List<E> {
 
 		@Override
 		public E next() {
-			E res = (E) curr.getElement();
+			E res = curr.getElement();
 			curr = curr.getNext();
 			return res;
 		}
@@ -66,7 +69,7 @@ public class SinglyLinkedList<E> implements List<E> {
 		for (int j=1; j<=i; j++) {
 			nodeI = nodeI.getNext();
 			if(i == j) {
-				return (E) nodeI.getElement();
+				return nodeI.getElement();
 			}
 		}
 		return null;
@@ -75,74 +78,68 @@ public class SinglyLinkedList<E> implements List<E> {
 	@Override
 	public void add(int i, E e) {
 		Node<E> nodeI = head;
-		for (int j=1; j<=i; j++) {
-			if(i == j) {
-				Node<E> nodeE = new Node<E>(e, nodeI.getNext());
-				nodeI.setNext(nodeE);
-				break;
+		if (i == 0) { //addFirst
+			head = new Node<>(e, head);
+			size++;
+		} else {
+			for (int j=1; j<=i; j++) {
+				if (j == i) {
+					nodeI.setNext(new Node<>(e, nodeI.getNext()));
+					size++;
+					break;
+				} else {
+					nodeI = nodeI.getNext();
+				}
 			}
-			nodeI = nodeI.getNext();
 		}
 	}
 
 	@Override
 	public E remove(int i) {
 		Node<E> nodeI = head;
-		for (int j=0; j<=i; j++) {
-			if(i == j) {
-				Node<E> temp = nodeI.getNext();
-				nodeI.setNext(nodeI.getNext().getNext());
-				return (E) temp.getElement();
-
+		if (i == 0) { //removeFirst
+			head = head.getNext();
+			size--;
+			return nodeI.getElement();
+		} else {
+			for (int j=1; j<=i; j++) {
+				if(i == j) { // ie nodeI.getNext is the element we want to remove
+					Node<E> temp = nodeI.getNext();
+					nodeI.setNext(nodeI.getNext().getNext());
+					size--;
+					return temp.getElement();
+				} else {
+					nodeI = nodeI.getNext();
+				}
 			}
-			nodeI.getNext();
 		}
 		return null;
 	}
 
 	@Override
 	public int size() {
-		Node<E> nodeI = head;
-		int a=0;
-		while (nodeI != null) {
-			a++;
-			nodeI = nodeI.getNext();
-		}
-		return a;
+		return this.size;
 	}
 
 
 	@Override
 	public E removeFirst() {
-		Node<E> temp = head;
-		head = head.getNext();
-		return (E) temp.getElement();
+		return remove(0);
 	}
 
 	@Override
 	public E removeLast() {
-		Node<E> nodeI = head;
-		while (nodeI.getNext().getNext() != null) {
-			nodeI = nodeI.getNext();
-		}
-		Node<E> temp = nodeI.getNext();
-		nodeI.setNext(null);
-		return (E) temp.getElement();
+		return remove(size-1);
 	}
 
 	@Override
 	public void addFirst(E e) {
-		head = new Node<E>(e, head);
+		add(0, e);
 	}
 
 	@Override
 	public void addLast(E e) {
-		Node<E> nodeI = head;
-		while (nodeI.getNext() != null) {
-			nodeI = nodeI.getNext();
-		}
-		nodeI.setNext(new Node<E>(e, null));
-
+		add(size-1, e);
 	}
 
 	@Override
@@ -151,17 +148,19 @@ public class SinglyLinkedList<E> implements List<E> {
 		String s = "[";
 		while(nodeI != null) {
 			s=s.concat(nodeI.getElement().toString());
-			s=s.concat(", ");
+			if (nodeI.getNext() != null) {
+				s=s.concat(", ");
+			}
 			nodeI = nodeI.getNext();
 		}
-		s=s.concat(" ]");
+		s=s.concat("]");
 		return s;
 	}
 
 	public static void main(String[] args) {
 		String[] alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ".split("");
 
-		SinglyLinkedList<String> sll = new SinglyLinkedList<String>();
+		SinglyLinkedList<String> sll = new SinglyLinkedList<>();
 		for (String s : alphabet) {
 			sll.addFirst(s);
 			sll.addLast(s);
