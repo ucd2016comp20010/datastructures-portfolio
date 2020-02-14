@@ -59,9 +59,10 @@ public class DoublyLinkedList<E> implements List<E> {
 	public E get(int i) {
 		Node<E> nodeI = header.getNext();
 		for (int j=0; j<=i; j++) {
-			nodeI = nodeI.getNext();
 			if(i == j) {
 				return nodeI.getElement();
+			} else {
+				nodeI = nodeI.getNext();
 			}
 		}
 		return null;

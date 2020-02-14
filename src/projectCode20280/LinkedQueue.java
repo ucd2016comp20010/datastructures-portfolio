@@ -1,40 +1,61 @@
 package projectCode20280;
 
 public class LinkedQueue<E> implements Queue<E> {
-
-	public static void main(String[] args) {
-		// TODO Auto-generated method stub
-
-	}
+	DoublyLinkedList<E> dll = new DoublyLinkedList<>();
 
 	@Override
 	public int size() {
-		// TODO Auto-generated method stub
-		return 0;
+		return dll.size();
 	}
 
 	@Override
 	public boolean isEmpty() {
-		// TODO Auto-generated method stub
-		return false;
+		return dll.isEmpty();
 	}
 
 	@Override
 	public void enqueue(E e) {
-		// TODO Auto-generated method stub
-		
+		dll.addLast(e);
 	}
 
 	@Override
 	public E first() {
-		// TODO Auto-generated method stub
-		return null;
+		return dll.get(0);
 	}
 
 	@Override
 	public E dequeue() {
 		// TODO Auto-generated method stub
-		return null;
+		return dll.removeFirst();
+	}
+
+	@Override
+	public String toString() {
+		return dll.toString();
+	}
+
+	public static void main(String[] args) {
+		LinkedQueue<Integer> q = new LinkedQueue<>();
+
+		q.enqueue(1);
+		q.enqueue(2);
+		q.enqueue(3);
+		q.enqueue(4);
+		System.out.println(q);
+
+		q.dequeue();
+		System.out.println(q);
+
+		q.enqueue(5);
+		System.out.println(q);
+
+		System.out.println("Size: " + q.size());
+
+		System.out.println("Is empty: " + q.isEmpty());
+
+		System.out.println("First: " + q.first());
+		System.out.println(q);
+
 	}
 
 }
