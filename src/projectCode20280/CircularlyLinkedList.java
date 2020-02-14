@@ -5,9 +5,9 @@ import java.util.Iterator;
 public class CircularlyLinkedList<E> implements List<E> {
 
 	//Tail keeps track of the last element in the list
-	Node<E> tail;
+	private Node<E> tail;
 	//Keeps track of the number of nodes in the list
-	int size;
+	private int size;
 
 	private static class Node<E> {
 		//Reference to the element stored in this node

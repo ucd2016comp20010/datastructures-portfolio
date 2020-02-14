@@ -2,11 +2,7 @@ package projectCode20280;
 
 public class LinkedDeque<E> implements Deque<E> {
 
-	DoublyLinkedList<E> dll = new DoublyLinkedList<>();
-
-	public static void main(String[] args) {
-
-	}
+	private DoublyLinkedList<E> dll = new DoublyLinkedList<>();
 
 	@Override
 	public int size() {
