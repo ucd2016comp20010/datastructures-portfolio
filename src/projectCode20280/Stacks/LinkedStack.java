@@ -1,4 +1,6 @@
-package projectCode20280;
+package projectCode20280.Stacks;
+
+import projectCode20280.LinkedLists.SinglyLinkedList;
 
 public class LinkedStack<E> implements Stack<E> {
 

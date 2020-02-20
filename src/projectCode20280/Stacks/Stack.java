@@ -1,4 +1,4 @@
-package projectCode20280;
+package projectCode20280.Stacks;
 
 public interface Stack<E> {
 

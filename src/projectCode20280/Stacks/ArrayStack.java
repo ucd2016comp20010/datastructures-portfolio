@@ -1,7 +1,4 @@
-package projectCode20280;
-
-import java.lang.reflect.Array;
-import java.util.Arrays;
+package projectCode20280.Stacks;
 
 public class ArrayStack<E> implements Stack<E> {
 	//Constant that stores the maximum size a stack can be

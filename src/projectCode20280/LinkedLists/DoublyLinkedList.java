@@ -1,6 +1,5 @@
-package projectCode20280;
+package projectCode20280.LinkedLists;
 
-import java.util.ArrayList;
 import java.util.Iterator;
 
 public class DoublyLinkedList<E> implements List<E> {

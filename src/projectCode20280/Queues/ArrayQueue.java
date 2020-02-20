@@ -1,4 +1,4 @@
-package projectCode20280;
+package projectCode20280.Queues;
 
 import java.util.Arrays;
 

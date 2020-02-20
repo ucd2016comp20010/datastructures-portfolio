@@ -1,4 +1,4 @@
-package projectCode20280;
+package projectCode20280.LinkedLists;
 
 import java.util.Iterator;
 /*
