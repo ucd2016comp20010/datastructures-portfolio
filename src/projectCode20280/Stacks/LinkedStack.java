@@ -27,12 +27,20 @@ public class LinkedStack<E> implements Stack<E> {
 
 	@Override
 	public E top() {
-		return ll.get(ll.size()-1);
+		if (!ll.isEmpty()) {
+			return ll.get(ll.size()-1);
+		} else {
+			return null;
+		}
 	}
 
 	@Override
 	public E pop() {
-		return ll.removeLast();
+		if (!ll.isEmpty()) {
+			return ll.removeLast();
+		} else {
+			return null;
+		}
 	}
 
 	public String toString() {

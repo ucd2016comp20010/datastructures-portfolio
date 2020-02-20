@@ -3,6 +3,8 @@ package projectCode20280.LinkedLists;
 import projectCode20280.Stacks.LinkedStack;
 
 import java.util.Iterator;
+import java.util.LinkedList;
+
 /*
  * Implemented by Thomas Reilly - thomas.reilly@ucdconnect.ie
  * A class that mimics a singly linked list made up of nodes that store an element and a reference
@@ -72,11 +74,11 @@ public class SinglyLinkedList<E> implements List<E> {
 	@Override
 	public E get(int i) {
 		Node<E> nodeI = head;
-		for (int j=1; j<=i; j++) {
-			nodeI = nodeI.getNext();
+		for (int j=0; j<=i; j++) {
 			if(i == j) {
 				return nodeI.getElement();
 			}
+			nodeI = nodeI.getNext();
 		}
 		return null;
 	}
@@ -173,10 +175,12 @@ public class SinglyLinkedList<E> implements List<E> {
 		Node<E> curr = head;
 		while(curr != null) {
 			temp.push(curr.getElement());
+			curr = curr.getNext();
 		}
 		curr = head;
 		while(curr != null) {
 			curr.setElement(temp.pop());
+			curr = curr.getNext();
 		}
 	}
 
@@ -209,6 +213,17 @@ public class SinglyLinkedList<E> implements List<E> {
 		for (String s : sll) {
 			System.out.print(s + ", ");
 		}
+		System.out.println();
+
+		SinglyLinkedList<Integer> ints = new SinglyLinkedList<>();
+		ints.addFirst(1);
+		ints.addFirst(2);
+		ints.addFirst(3);
+		ints.addFirst(4);
+
+		System.out.println("Non-reversed List: " + ints);
+		ints.reverse();
+		System.out.println("Reversed List: " + ints);
 	}
 
 
