@@ -1,5 +1,7 @@
 package projectCode20280.LinkedLists;
 
+import projectCode20280.Stacks.LinkedStack;
+
 import java.util.Iterator;
 /*
  * Implemented by Thomas Reilly - thomas.reilly@ucdconnect.ie
@@ -33,6 +35,10 @@ public class SinglyLinkedList<E> implements List<E> {
 
 		private void setNext(Node<E> N) {
 			this.next = N;
+		}
+
+		private void setElement(E e) {
+			this.element = e;
 		}
 	}
 
@@ -160,6 +166,18 @@ public class SinglyLinkedList<E> implements List<E> {
 		}
 		s=s.concat("]");
 		return s;
+	}
+	
+	public void reverse() {
+		LinkedStack<E> temp = new LinkedStack<>();
+		Node<E> curr = head;
+		while(curr != null) {
+			temp.push(curr.getElement());
+		}
+		curr = head;
+		while(curr != null) {
+			curr.setElement(temp.pop());
+		}
 	}
 
 	public static void main(String[] args) {
