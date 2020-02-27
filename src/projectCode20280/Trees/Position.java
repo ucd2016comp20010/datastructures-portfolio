@@ -1,4 +1,4 @@
-package projectCode20280;
+package projectCode20280.Trees;
 
 /**
  * An interface for a position which is an abstraction for the

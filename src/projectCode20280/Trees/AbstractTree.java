@@ -1,4 +1,7 @@
-package projectCode20280;
+package projectCode20280.Trees;
+
+import projectCode20280.Queues.LinkedQueue;
+import projectCode20280.Queues.Queue;
 
 import java.util.ArrayList;
 import java.util.List;

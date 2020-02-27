@@ -1,11 +1,10 @@
 package projectCode20280.Algorithms;
 
-import java.util.ArrayList;
 import java.util.Arrays;
 
 public class Recursion {
 
-    public static int[] reverseArray(int[] a, int i, int j) {
+    private static int[] reverseArray(int[] a, int i, int j) {
         if (i < j) {
             int temp = a[i];
             a[i] = a[j];

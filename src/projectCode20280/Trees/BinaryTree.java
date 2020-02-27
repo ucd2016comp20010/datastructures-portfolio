@@ -1,4 +1,4 @@
-package projectCode20280;
+package projectCode20280.Trees;
 
 /**
  * An interface for a binary tree, in which each node has at most two children.
