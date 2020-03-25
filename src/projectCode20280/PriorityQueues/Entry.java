@@ -1,4 +1,4 @@
-package projectCode20280;
+package projectCode20280.PriorityQueues;
 
 /**
  * Interface for a key-value pair.

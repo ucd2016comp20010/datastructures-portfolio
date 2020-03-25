@@ -1,4 +1,4 @@
-package projectCode20280;
+package projectCode20280.PriorityQueues;
 
 
 import java.util.Comparator;
@@ -37,6 +37,12 @@ public abstract class AbstractPriorityQueue<K,V> implements PriorityQueue<K,V> {
     // utilities not exposed as part of the Entry interface
     protected void setKey(K key) { k = key; }
     protected void setValue(V value) { v = value; }
+
+    @Override
+    public String toString() {
+      return "(k=" + k +
+              ", v=" + v + ')';
+    }
   } //----------- end of nested PQEntry class -----------
 
   // instance variable for an AbstractPriorityQueue
