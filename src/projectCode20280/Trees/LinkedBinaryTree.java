@@ -194,7 +194,7 @@ public class LinkedBinaryTree<E extends Comparable<E>> extends AbstractBinaryTre
       root = createNode(e, null, null, null);
       return root;
     } else if (curr == null) {
-      return createNode(e, p, null, null)
+      return createNode(e, p, null, null);
     }
 
     // Recursive Cases
