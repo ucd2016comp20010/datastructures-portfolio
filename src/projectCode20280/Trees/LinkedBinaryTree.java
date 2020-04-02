@@ -14,7 +14,7 @@ public class LinkedBinaryTree<E extends Comparable<E>> extends AbstractBinaryTre
     private Node<E> left;
     private Node<E> right;
 
-    private Node(E e, Node p, Node l, Node r) {
+    private Node(E e, Node<E> p, Node<E> l, Node<E> r) {
       this.element = e;
       this.parent = p;
       this.left = l;
@@ -133,7 +133,7 @@ public class LinkedBinaryTree<E extends Comparable<E>> extends AbstractBinaryTre
    */
   @Override
   public Position<E> parent(Position<E> p) throws IllegalArgumentException {
-	Node<E> pos = (Node) p;
+	Node<E> pos = (Node<E>) p;
     return pos.getParent();
   }
 
@@ -146,7 +146,7 @@ public class LinkedBinaryTree<E extends Comparable<E>> extends AbstractBinaryTre
    */
   @Override
   public Position<E> left(Position<E> p) throws IllegalArgumentException {
-    Node<E> pos = (Node) p;
+    Node<E> pos = (Node<E>) p;
     return pos.getLeft();
   }
 
@@ -159,7 +159,7 @@ public class LinkedBinaryTree<E extends Comparable<E>> extends AbstractBinaryTre
    */
   @Override
   public Position<E> right(Position<E> p) throws IllegalArgumentException {
-    Node<E> pos = (Node) p;
+    Node<E> pos = (Node<E>) p;
     return pos.getRight();
   }
 
@@ -194,7 +194,7 @@ public class LinkedBinaryTree<E extends Comparable<E>> extends AbstractBinaryTre
       root = createNode(e, null, null, null);
       return root;
     } else if (curr == null) {
-      return new Node(e, p, null, null);
+      return createNode(e, p, null, null)
     }
 
     // Recursive Cases
@@ -223,7 +223,7 @@ public class LinkedBinaryTree<E extends Comparable<E>> extends AbstractBinaryTre
    * @throws IllegalArgumentException if p already has a left child
    */
   public Position<E> addLeft(Position<E> p, E e) throws IllegalArgumentException {
-      Node<E> pos = (Node) p;
+      Node<E> pos = (Node<E>) p;
       Node<E> newN = new Node<E>(e, pos, null, null);
       pos.setLeft(newN);
       return newN;
@@ -240,7 +240,7 @@ public class LinkedBinaryTree<E extends Comparable<E>> extends AbstractBinaryTre
    * @throws IllegalArgumentException if p already has a right child
    */
   public Position<E> addRight(Position<E> p, E e) throws IllegalArgumentException {
-    Node<E> pos = (Node) p;
+    Node<E> pos = (Node<E>) p;
     Node<E> newN = new Node<E>(e, pos, null, null);
     pos.setRight(newN);
     return newN;
@@ -300,7 +300,7 @@ public class LinkedBinaryTree<E extends Comparable<E>> extends AbstractBinaryTre
   
   public static void main(String [] args)
   {
-	  LinkedBinaryTree<Integer> bt = new LinkedBinaryTree<Integer>();
+	  LinkedBinaryTree<Integer> bt = new LinkedBinaryTree<>();
 
 	  int [] arr = {12, 25, 31, 58, 36, 42, 90, 62, 75};
 	  for(int i : arr) {
