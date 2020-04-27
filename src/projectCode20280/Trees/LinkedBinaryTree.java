@@ -307,6 +307,7 @@ public class LinkedBinaryTree<E extends Comparable<E>> extends AbstractBinaryTre
 		  bt.insert(i);
 	  }
 	  System.out.println("bt: " + bt.size() + " " + bt );
+	  
   }
 } 
 
