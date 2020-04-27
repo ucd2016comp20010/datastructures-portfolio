@@ -1,6 +1,6 @@
 package projectCode20280.Queues;
 
-import projectCode20280.LinkedLists.CircularlyLinkedList;
+import projectCode20280.Lists.CircularlyLinkedList;
 
 /**
  * Realization of a circular FIFO queue as an adaptation of a

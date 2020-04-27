@@ -1,9 +1,8 @@
-package projectCode20280.LinkedLists;
+package projectCode20280.Lists;
 
 import projectCode20280.Stacks.LinkedStack;
 
 import java.util.Iterator;
-import java.util.LinkedList;
 
 /*
  * Implemented by Thomas Reilly - thomas.reilly@ucdconnect.ie

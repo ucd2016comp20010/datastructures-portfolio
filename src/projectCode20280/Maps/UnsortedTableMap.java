@@ -1,4 +1,4 @@
-package projectCode20280;
+package projectCode20280.Maps;
 
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -7,18 +7,21 @@ import java.util.NoSuchElementException;
 /**
  * An implementation of a map using an unsorted table.
  */
-
 public class UnsortedTableMap<K, V> extends AbstractMap<K, V> {
 	/** Underlying storage for the map of entries. */
 	private ArrayList<MapEntry<K, V>> table = new ArrayList<>();
 
 	/** Constructs an initially empty map. */
-	public UnsortedTableMap() {
-	}
+	public UnsortedTableMap() { }
 
 	// private utility
 	/** Returns the index of an entry with equal key, or -1 if none found. */
 	private int findIndex(K key) {
+		for (int i=0; i<table.size(); i++) {
+			if(table.get(i).getKey().equals(key)) {
+				return i;
+			}
+		}
 		return -1;
 	}
 
@@ -42,8 +45,8 @@ public class UnsortedTableMap<K, V> extends AbstractMap<K, V> {
 	 */
 	@Override
 	public V get(K key) {
-		//TODO
-		return null;
+		int index = findIndex(key);
+		return index == -1 ? null : table.get(index).getValue();
 	}
 
 	/**
@@ -58,8 +61,13 @@ public class UnsortedTableMap<K, V> extends AbstractMap<K, V> {
 	 */
 	@Override
 	public V put(K key, V value) {
-		// TODO
-		return null;
+		int index = findIndex(key);
+		if (index == -1) {
+			table.add(new MapEntry<>(key, value));
+			return null;
+		} else {
+			return table.get(index).setValue(value);
+		}
 	}
 
 	/**
@@ -72,8 +80,16 @@ public class UnsortedTableMap<K, V> extends AbstractMap<K, V> {
 	 */
 	@Override
 	public V remove(K key) {
-		// TODO
-		return null;
+		int index = findIndex(key);
+		if (index == -1) {
+			return null;
+		}
+		V old = table.get(index).getValue();
+		if (index != table.size()-1) {
+			table.set(index, table.get(size()-1));
+		}
+		table.remove(size()-1);
+		return old;
 	}
 
 	// ---------------- nested EntryIterator class ----------------
@@ -110,5 +126,10 @@ public class UnsortedTableMap<K, V> extends AbstractMap<K, V> {
 	@Override
 	public Iterable<Entry<K, V>> entrySet() {
 		return new EntryIterable();
+	}
+
+	@Override
+	public String toString() {
+		return table.toString();
 	}
 }

@@ -1,6 +1,6 @@
 package projectCode20280.Queues;
 
-import projectCode20280.LinkedLists.DoublyLinkedList;
+import projectCode20280.Lists.DoublyLinkedList;
 
 public class LinkedDeque<E> implements Deque<E> {
 

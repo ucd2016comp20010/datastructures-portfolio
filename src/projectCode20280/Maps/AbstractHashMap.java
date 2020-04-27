@@ -1,6 +1,5 @@
-package projectCode20280;
+package projectCode20280.Maps;
 
-import java.util.ArrayList;
 import java.util.Random;
 
 /**
@@ -108,8 +107,7 @@ public abstract class AbstractHashMap<K, V> extends AbstractMap<K, V> {
      * Hash function applying MAD method to default hash code.
      */
     private int hashValue(K key) {
-        // TODO
-    	return 0;
+    	return (int) (( Math.abs(key.hashCode() * scale + shift) % prime) % capacity);
     }
 
     /**

@@ -1,11 +1,10 @@
-package projectCode20280;
-
-import java.util.ArrayList;
-import java.util.HashMap;
+package projectCode20280.Maps;
 
 /*
  * Map implementation using hash table with separate chaining.
  */
+
+import java.util.ArrayList;
 
 public class ChainHashMap<K, V> extends AbstractHashMap<K, V> {
 	// a fixed capacity array of UnsortedTableMap that serve as buckets
@@ -30,7 +29,7 @@ public class ChainHashMap<K, V> extends AbstractHashMap<K, V> {
 	@Override
 	@SuppressWarnings({ "unchecked" })
 	protected void createTable() {
-
+		table = (UnsortedTableMap<K, V>[]) new UnsortedTableMap[capacity];
 	}
 
 	/**
@@ -43,7 +42,8 @@ public class ChainHashMap<K, V> extends AbstractHashMap<K, V> {
 	 */
 	@Override
 	protected V bucketGet(int h, K k) {
-		return null;
+		UnsortedTableMap<K,V> bucket = table[h];
+		return bucket == null ? null : bucket.get(k);
 	}
 
 	/**
@@ -57,7 +57,15 @@ public class ChainHashMap<K, V> extends AbstractHashMap<K, V> {
 	 */
 	@Override
 	protected V bucketPut(int h, K k, V v) {
-		return null;
+		UnsortedTableMap<K,V> bucket = table[h];
+		if (bucket == null) {
+			bucket = new UnsortedTableMap<K, V>();
+			table[h] = bucket;
+		}
+		int prev_size = bucket.size();
+		V old = bucket.put(k, v);
+		n -= (prev_size - bucket.size());
+		return old;
 	}
 
 	/**
@@ -70,7 +78,14 @@ public class ChainHashMap<K, V> extends AbstractHashMap<K, V> {
 	 */
 	@Override
 	protected V bucketRemove(int h, K k) {
-		return null;
+		UnsortedTableMap<K, V> bucket = table[h];
+		if (bucket == null) {
+			return null;
+		}
+		int prev_size = bucket.size();
+		V old = bucket.remove(k);
+		n += (bucket.size() - prev_size);
+		return old;
 	}
 
 	/**
@@ -80,20 +95,56 @@ public class ChainHashMap<K, V> extends AbstractHashMap<K, V> {
 	 */
 	@Override
 	public Iterable<Entry<K, V>> entrySet() {
-		return null;
+		ArrayList<Entry<K,V>> set = new ArrayList<Entry<K,V>>();
+		for (UnsortedTableMap<K,V> bucket:table) {
+			if (bucket!=null) {
+				for (Entry<K,V> entry:bucket.entrySet()) {
+					set.add(entry);
+				}
+			}
+		}
+		return set;
 	}
-	
+
+	@Override
+	public String toString() {
+		return entrySet().toString();
+	}
+
 	public static void main(String[] args) {
-		//HashMap<Integer, String> m = new HashMap<Integer, String>();
+		//Test construction
+		System.out.println("Creating a ChainHashMap");
 		ChainHashMap<Integer, String> m = new ChainHashMap<Integer, String>();
-		m.put(1, "One");
+		System.out.println("ChainHashMap: " + m);
+
+		//Test putting entries
+		System.out.println("\nAdding the following (key, value) entries:");
+
+		System.out.println("1, \"One\"");
+		System.out.println("size before: " + m.size());
+		String n = m.put(1, "One");
+		System.out.println("size after: " + m.size());
+		System.out.println("return value of put: " + n);
+
+
+		System.out.println("10, \"Ten\"");
 		m.put(10, "Ten");
+		System.out.println("11, \"Eleven\"");
 		m.put(11, "Eleven");
+		System.out.println("20, \"Twenty\"");
 		m.put(20, "Twenty");
 		
-		System.out.println("m: " + m);
-		
-		m.remove(11);
-		System.out.println("m: " + m);
+		System.out.println("\nChainHashMap: " + m);
+
+		//Test getting
+		System.out.println("\nGetting key 20");
+		n = m.get(20);
+		System.out.println("returned value: " + n);
+
+		//Test removing
+		System.out.println("\nRemoving key 11");
+		n = m.remove(11);
+		System.out.println("return value of remove: " + n);
+		System.out.println("ChainHashMap: " + m);
 	}
 }

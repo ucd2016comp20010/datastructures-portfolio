@@ -1,4 +1,4 @@
-package projectCode20280;
+package projectCode20280.Maps;
 
 /**
  * An interface for an associative map which binds a key uniquely to a value.
