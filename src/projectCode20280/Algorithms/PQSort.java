@@ -1,6 +1,6 @@
 package projectCode20280.Algorithms;
 
-import projectCode20280.PriorityQueues.HeapPriorityQueue;
+import projectCode20280.Data_Structures.HeapPriorityQueue;
 
 import java.util.LinkedList;
 import java.util.Random;

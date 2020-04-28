@@ -1,6 +1,6 @@
 package projectCode20280.Algorithms;
 
-import projectCode20280.Stacks.LinkedStack;
+import projectCode20280.Data_Structures.LinkedStack;
 
 public class ParenthesesChecker {
     /*
