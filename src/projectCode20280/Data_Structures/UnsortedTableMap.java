@@ -6,6 +6,8 @@ import java.util.NoSuchElementException;
 
 /**
  * An implementation of a map using an unsorted table.
+ * Contains all functions of the Map ADT.
+ * @author Thomas Reilly - thomas.reilly@ucdconnect.ie
  */
 public class UnsortedTableMap<K, V> extends AbstractMap<K, V> {
 	/** Underlying storage for the map of entries. */
@@ -131,5 +133,21 @@ public class UnsortedTableMap<K, V> extends AbstractMap<K, V> {
 	@Override
 	public String toString() {
 		return table.toString();
+	}
+
+	public static void main(String[] args) {
+		UnsortedTableMap<Integer,Integer> utm = new UnsortedTableMap<>();
+
+		utm.put(1, 1);
+		utm.put(2, 2);
+		utm.put(3, 3);
+
+		System.out.println(utm);
+
+		System.out.println("Value at key 1: " + utm.get(1));
+
+		utm.remove(2);
+
+		System.out.println("After removing key 2: " + utm);
 	}
 }

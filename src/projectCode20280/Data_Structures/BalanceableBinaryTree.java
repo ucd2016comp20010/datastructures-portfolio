@@ -31,14 +31,17 @@ public class BalanceableBinaryTree<K, V> extends LinkedBinaryTree<Entry<K, V>> {
 
 	// Override node factory function to produce a BSTNode (rather than a Node)
 	@Override
-	protected Node<Entry<K, V>> createNode(Entry<K, V> e, Node<Entry<K, V>> parent, Node<Entry<K, V>> left,
-			Node<Entry<K, V>> right) {
+	protected Node<Entry<K,V>> createNode(Entry<K,V> e, Node<Entry<K,V>> parent, Node<Entry<K,V>> left, Node<Entry<K,V>> right) {
 		return new BSTNode<>(e, parent, left, right);
 	}
 
 	/** Relinks a parent node with its oriented child node. */
 	private void relink(Node<Entry<K, V>> parent, Node<Entry<K, V>> child, boolean makeLeftChild) {
-		// TODO
+		child.setParent(parent);
+		if (makeLeftChild)
+			parent.setLeft(child);
+		else
+			parent.setRight(child);
 	}
 
 	/**
@@ -55,8 +58,23 @@ public class BalanceableBinaryTree<K, V> extends LinkedBinaryTree<Entry<K, V>> {
 	 * 
 	 * Caller should ensure that p is not the root.
 	 */
-	public void rotate(Position<Entry<K, V>> p) {
-		// TODO
+	public void rotate(Position<Entry<K,V>> p) {
+		Node<Entry<K,V>> pos = validate(p);
+		Node<Entry<K,V>> parent = pos.getParent();
+		Node<Entry<K,V>> parentParent = parent.getParent();
+		if (parentParent== null) {
+			root = pos;
+			pos.setParent(null);
+		} else {
+			relink(parentParent, pos, parent == parentParent.getLeft());
+		}
+		if (pos == parent.getLeft()) {
+			relink(parent, pos.getRight(), true);
+			relink(pos, parent, false);
+		} else {
+			relink(parent, pos.getLeft(), false);
+			relink(pos, parent, true);
+		}
 	}
 
 	/**
@@ -88,8 +106,16 @@ public class BalanceableBinaryTree<K, V> extends LinkedBinaryTree<Entry<K, V>> {
 	 * 
 	 * Caller should ensure that x has a grandparent.
 	 */
-	public Position<Entry<K, V>> restructure(Position<Entry<K, V>> x) {
-		// TODO 
-		return null;
+	public Position<Entry<K, V>> restructure(Position<Entry<K,V>> pos) {
+		Position<Entry<K,V>> parent = parent(pos);
+		Position<Entry<K,V>> grandParent = parent(parent);
+		if ((pos == right(parent)) == (parent == right(grandParent))) {
+			rotate(parent);
+			return parent;
+		} else {
+			rotate(pos);
+			rotate(pos);
+			return pos;
+		}
 	}
 } 

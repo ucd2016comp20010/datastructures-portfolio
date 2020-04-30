@@ -1,5 +1,10 @@
 package projectCode20280.Data_Structures;
 
+/**
+ * A stack implemented on Java Arrays. This stack consequently has limited space that must be decided upon construction.
+ * It contains all functions of the stack ADT.
+ * @author Thomas Reilly - thomas.reilly@ucdconnect.ie
+ */
 public class ArrayStack<E> implements Stack<E> {
 	//Constant that stores the maximum size a stack can be
 	private final int MAX_SIZE;
@@ -25,6 +30,10 @@ public class ArrayStack<E> implements Stack<E> {
 		return top == -1;
 	}
 
+	/**
+	 * Adds an element to the top of the stack.
+	 * @param e the element to be inserted
+	 */
 	@Override
 	public void push(E e) {
 		if (top+1 == MAX_SIZE) {
@@ -34,11 +43,19 @@ public class ArrayStack<E> implements Stack<E> {
 		a[top] = e;
 	}
 
+	/**
+	 * Returns the element at the top of the stack.
+	 * @return the element (E) at the top of the stack.
+	 */
 	@Override
 	public E top() {
 		return a[top];
 	}
 
+	/**
+	 * Removes an element fron the top of the stack.
+	 * @return the removed element (E).
+	 */
 	@Override
 	public E pop() {
 		if (isEmpty()) {
@@ -71,17 +88,18 @@ public class ArrayStack<E> implements Stack<E> {
 		System.out.println(stack);
 		//Expected [1, 2, 3, 4]
 
-		System.out.println(stack.pop());
+		System.out.println("Pop: " + stack.pop());
 		//Expected 4
 		System.out.println(stack);
 		//Expected [1, 2, 3]
 
 		stack.push(5);
+		System.out.println("Push(5)");
 
 		System.out.println(stack);
 		//Expected [1, 2, 3, 5]
 
-		System.out.println(stack.top());
+		System.out.println("Top: " + stack.top());
 		//Expected 5
 	}
 

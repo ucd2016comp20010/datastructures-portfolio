@@ -1,4 +1,4 @@
-package projectCode20280.Tests;
+package projectCode20280.Data_Structures.Tests;
 
 import static org.junit.jupiter.api.Assertions.*;
 import projectCode20280.Data_Structures.*;
@@ -19,21 +19,21 @@ class SinglyLinkedListTest {
 	@Test
 	void testIsEmpty() {
 		SinglyLinkedList<Integer> ll = new SinglyLinkedList<>();
-		assertEquals(true, ll.isEmpty());
+		assertTrue(ll.isEmpty());
 		ll.addFirst(0);
-		assertEquals(false, ll.isEmpty());
+		assertFalse(ll.isEmpty());
 		ll.removeFirst();
-		assertEquals(true, ll.isEmpty());
+		assertTrue(ll.isEmpty());
 	}
 
 	@Test
 	void testFirst() {
 		SinglyLinkedList<Integer> ll = new SinglyLinkedList<>();
 		ll.addFirst(-1);
-		//TODO assertEquals(-1, ll.first());
+		assertEquals(-1, ll.first());
 		
 		ll.removeFirst();
-		//TODO assertEquals(null, ll.first());
+		assertNull(ll.first());
 		
 		
 	}
@@ -43,13 +43,13 @@ class SinglyLinkedListTest {
 		SinglyLinkedList<Integer> ll = new SinglyLinkedList<>();
 		ll.addFirst(-1);
 
-		//TODO assertEquals(-1, ll.last());
+		assertEquals(-1, ll.last());
 
 		ll.addFirst(-2);
-		//TODO assertEquals(-1, ll.last());
+		assertEquals(-1, ll.last());
 		
 		ll.addLast(-3);
-		//TODO assertEquals(-3, ll.last());
+		assertEquals(-3, ll.last());
 	}
 
 

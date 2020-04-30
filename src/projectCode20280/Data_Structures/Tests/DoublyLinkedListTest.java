@@ -1,4 +1,4 @@
-package projectCode20280.Tests;
+package projectCode20280.Data_Structures.Tests;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -19,21 +19,21 @@ class DoublyLinkedListTest {
 	@Test
 	void testIsEmpty() {
 		DoublyLinkedList<Integer> ll = new DoublyLinkedList<>();
-		assertEquals(true, ll.isEmpty());
+		assertTrue(ll.isEmpty());
 		ll.addFirst(0);
-		assertEquals(false, ll.isEmpty());
+		assertFalse(ll.isEmpty());
 		ll.removeFirst();
-		assertEquals(true, ll.isEmpty());
+		assertTrue(ll.isEmpty());
 	}
 
 	@Test
 	void testFirst() {
 		DoublyLinkedList<Integer> ll = new DoublyLinkedList<>();
 		ll.addFirst(-1);
-		//TODO assertEquals(-1, ll.first());
+		assertEquals(-1, ll.first());
 		
 		ll.removeFirst();
-		//TODO assertEquals(null, ll.first());
+		assertNull(ll.first());
 		
 		
 	}
@@ -43,13 +43,13 @@ class DoublyLinkedListTest {
 		DoublyLinkedList<Integer> ll = new DoublyLinkedList<>();
 		ll.addFirst(-1);
 
-		//TODO assertEquals(-1, ll.last());
+		assertEquals(-1, ll.last());
 
 		ll.addFirst(-2);
-		//TODO assertEquals(-1, ll.last());
+		assertEquals(-1, ll.last());
 		
 		ll.addLast(-3);
-		//TODO assertEquals(-3, ll.last());
+		assertEquals(-3, ll.last());
 	}
 
 

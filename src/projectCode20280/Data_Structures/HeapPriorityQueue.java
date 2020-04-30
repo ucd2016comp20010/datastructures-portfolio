@@ -5,6 +5,8 @@ import java.util.Comparator;
 
 /**
  * An implementation of a priority queue using an array-based heap.
+ * Contains all functions of the Priority Queue ADT.
+ * @author Thomas Reilly - thomas.reilly@ucdconnect.ie
  */
 public class HeapPriorityQueue<K,V> extends AbstractPriorityQueue<K,V> {
 
@@ -32,7 +34,7 @@ public class HeapPriorityQueue<K,V> extends AbstractPriorityQueue<K,V> {
   public HeapPriorityQueue(K[] keys, V[] values) {
     super();
     for (int i = 0; i < keys.length; i++) {
-      heap.add((new PQEntry<K,V>(keys[i], values[i])));
+      heap.add((new PQEntry<>(keys[i], values[i])));
     }
     heapify();
   }
@@ -72,10 +74,7 @@ public class HeapPriorityQueue<K,V> extends AbstractPriorityQueue<K,V> {
 
   /** Moves the entry at index j higher, if necessary, to restore the heap property. */
   protected void upHeap(int j) {
-    if (j == 0) {
-      return;
-      //is root, so do nothing. (Base Case)
-    } else if (compare(heap.get(j), heap.get(parent(j))) <= 0) {
+    if (compare(heap.get(j), heap.get(parent(j))) <= 0) {
       //Parent is greater so swap
       swap(j, parent(j));
       upHeap(parent(j));
@@ -162,7 +161,14 @@ public class HeapPriorityQueue<K,V> extends AbstractPriorityQueue<K,V> {
 
   @Override
   public String toString() {
-    return "HeapPriorityQueue " + heap;
+    StringBuilder sb = new StringBuilder("[");
+    for (Entry<K,V> e:heap) {
+      sb.append(e.getValue()).append(", ");
+    }
+    if (sb.length() > 2)
+      sb.delete(sb.length()-2, sb.length());
+    sb.append("]");
+    return sb.toString();
   }
 
   /** Used for debugging purposes only */

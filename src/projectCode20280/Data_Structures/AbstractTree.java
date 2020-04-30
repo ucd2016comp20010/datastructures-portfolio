@@ -115,7 +115,7 @@ public abstract class AbstractTree<E> implements Tree<E> {
     return h;
   }
 
-  public abstract void createLevelOrder(Integer[] arr);
+  public abstract void createLevelOrder(E[] arr);
 
   //---------- support for various iterations of a tree ----------
 

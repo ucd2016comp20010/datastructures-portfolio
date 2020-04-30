@@ -1,14 +1,15 @@
-package projectCode20280.Tests;
+package projectCode20280.Data_Structures.Tests;
 
 import static org.junit.jupiter.api.Assertions.*;
-import org.junit.jupiter.api.Test;
-import projectCode20280.Data_Structures.SplayTreeMap;
 
-class SplayTreeMapTest {
+import org.junit.jupiter.api.Test;
+import projectCode20280.Data_Structures.AVLTreeMap;
+
+class AVLTreeMapTest {
 
 	@Test
 	void testGet() {
-		SplayTreeMap<Integer, String> map = new SplayTreeMap<>();
+		AVLTreeMap<Integer, String> map = new AVLTreeMap<>();
 		Integer[] arr = new Integer[] {35,26,15,24,33,4,12,1,23,21,2,5};
 
 		for(Integer i : arr) {
@@ -21,19 +22,19 @@ class SplayTreeMapTest {
 
 	@Test
 	void testPut() {
-		SplayTreeMap<Integer, String> map = new SplayTreeMap<>();
+		AVLTreeMap<Integer, String> map = new AVLTreeMap<>();
 		Integer[] arr = new Integer[] {35,26,15,24,33,4,12,1,23,21,2,5};
 
 		for(Integer i : arr) {
 			map.put(i, Integer.toString(i));
 		}
 		
-		assertEquals("[1, 2, 4, 5, 12, 15, 21, 23, 24, 26, 33, 35]", map.keySet().toString());
+		assertEquals("[1, 2, 4, 5, 12, 15, 21, 23, 24, 26, 33, 35]", map.toString());
 	}
 
 	@Test
 	void testRemoveK() {
-		SplayTreeMap<Integer, String> map = new SplayTreeMap<>();
+		AVLTreeMap<Integer, String> map = new AVLTreeMap<>();
 		Integer[] arr = new Integer[] {35,26,15,24,33,4,12,1,23,21,2,5};
 
 		for(Integer i : arr) {
@@ -47,7 +48,7 @@ class SplayTreeMapTest {
 
 	@Test
 	void testFirstEntry() {
-		SplayTreeMap<Integer, String> map = new SplayTreeMap<>();
+		AVLTreeMap<Integer, String> map = new AVLTreeMap<>();
 		Integer[] arr = new Integer[] {35,26,15,24,33,4,12,1,23,21,2,5};
 
 		for(Integer i : arr) {
@@ -59,7 +60,7 @@ class SplayTreeMapTest {
 
 	@Test
 	void testLastEntry() {
-		SplayTreeMap<Integer, String> map = new SplayTreeMap<>();
+		AVLTreeMap<Integer, String> map = new AVLTreeMap<>();
 		//java.util.TreeMap<Integer, String> map = new java.util.TreeMap<>();
 		Integer[] arr = new Integer[] {35,26,15,24,33,4,12,1,23,21,2,5};
 
@@ -72,7 +73,7 @@ class SplayTreeMapTest {
 
 	@Test
 	void testCeilingEntry() {
-		SplayTreeMap<Integer, String> map = new SplayTreeMap<>();
+		AVLTreeMap<Integer, String> map = new AVLTreeMap<>();
 		//java.util.TreeMap<Integer, String> map = new java.util.TreeMap<>();
 		Integer[] arr = new Integer[] {35,26,15,24,33,4,12,1,23,21,2,5};
 
@@ -87,7 +88,7 @@ class SplayTreeMapTest {
 
 	@Test
 	void testFloorEntry() {
-		SplayTreeMap<Integer, String> map = new SplayTreeMap<>();
+		AVLTreeMap<Integer, String> map = new AVLTreeMap<>();
 		//java.util.TreeMap<Integer, String> map = new java.util.TreeMap<>();
 		Integer[] arr = new Integer[] {35,26,15,24,33,4,12,1,23,21,2,5};
 
@@ -101,7 +102,7 @@ class SplayTreeMapTest {
 
 	@Test
 	void testLowerEntry() {
-		SplayTreeMap<Integer, String> map = new SplayTreeMap<>();
+		AVLTreeMap<Integer, String> map = new AVLTreeMap<>();
 		//java.util.TreeMap<Integer, String> map = new java.util.TreeMap<>();
 		Integer[] arr = new Integer[] {35,26,15,24,33,4,12,1,23,21,2,5};
 
@@ -115,7 +116,7 @@ class SplayTreeMapTest {
 
 	@Test
 	void testHigherEntry() {
-		SplayTreeMap<Integer, String> map = new SplayTreeMap<>();
+		AVLTreeMap<Integer, String> map = new AVLTreeMap<>();
 		//java.util.TreeMap<Integer, String> map = new java.util.TreeMap<>();
 		Integer[] arr = new Integer[] {35,26,15,24,33,4,12,1,23,21,2,5};
 
@@ -128,24 +129,32 @@ class SplayTreeMapTest {
 
 	@Test
 	void testEntrySet() {
-		fail("Not yet implemented");
-	}
-
-	@Test
-	void testToString() {
-		SplayTreeMap<Integer, String> map = new SplayTreeMap<>();
+		AVLTreeMap<Integer, String> map = new AVLTreeMap<>();
 		//java.util.TreeMap<Integer, String> map = new java.util.TreeMap<>();
 		Integer[] arr = new Integer[] {35,26,15,24,33,4,12,1,23,21,2,5};
 
 		for(Integer i : arr) {
 			map.put(i, Integer.toString(i));
 		}
-		assertEquals("", map.toString());
+
+		assertEquals("[<1, 1>, <2, 2>, <4, 4>, <5, 5>, <12, 12>, <15, 15>, <21, 21>, <23, 23>, <24, 24>, <26, 26>, <33, 33>, <35, 35>]", map.entrySet().toString());
+	}
+
+	@Test
+	void testToString() {
+		AVLTreeMap<Integer, String> map = new AVLTreeMap<>();
+		//java.util.TreeMap<Integer, String> map = new java.util.TreeMap<>();
+		Integer[] arr = new Integer[] {35,26,15,24,33,4,12,1,23,21,2,5};
+
+		for(Integer i : arr) {
+			map.put(i, Integer.toString(i));
+		}
+		assertEquals("[1, 2, 4, 5, 12, 15, 21, 23, 24, 26, 33, 35]", map.toString());
 	}
 
 	@Test
 	void testSubMap() {
-		SplayTreeMap<Integer, String> map = new SplayTreeMap<>();
+		AVLTreeMap<Integer, String> map = new AVLTreeMap<>();
 		//java.util.TreeMap<Integer, String> map = new java.util.TreeMap<>();
 		Integer[] arr = new Integer[] {35,26,15,24,33,4,12,1,23,21,2,5};
 
@@ -153,7 +162,7 @@ class SplayTreeMapTest {
 			map.put(i, Integer.toString(i));
 		}
 				
-		// assertEquals("[12, 15, 21, 23, 24, 26, 33]", map.subMap(12, 34).keySet().toString());	
+		//assertEquals("[12, 15, 21, 23, 24, 26, 33]", map.subMap(12, 34).keySet().toString());	
 		assertEquals("[<12, 12>, <15, 15>, <21, 21>, <23, 23>, <24, 24>, <26, 26>, <33, 33>]", map.subMap(12, 34).toString());	
 	}
 

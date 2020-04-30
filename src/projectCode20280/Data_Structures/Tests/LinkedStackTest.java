@@ -1,4 +1,4 @@
-package projectCode20280.Tests;
+package projectCode20280.Data_Structures.Tests;
 
 import static org.junit.jupiter.api.Assertions.*;
 import projectCode20280.Data_Structures.*;
@@ -22,7 +22,7 @@ class LinkedStackTest {
 		for(int i = 0; i < 10; ++i) {
 			s.pop();
 		}
-		assertEquals(true, s.isEmpty());
+		assertTrue(s.isEmpty());
 	}
 
 	@Test

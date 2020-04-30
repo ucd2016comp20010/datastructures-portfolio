@@ -1,4 +1,4 @@
-package projectCode20280.Tests;
+package projectCode20280.Data_Structures.Tests;
 
 import static org.junit.jupiter.api.Assertions.*;
 

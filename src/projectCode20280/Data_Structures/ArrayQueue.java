@@ -2,6 +2,11 @@ package projectCode20280.Data_Structures;
 
 import java.util.Arrays;
 
+/**
+ * A queue implemented on Java Arrays. This queue consequently has limited space that must be decided upon construction.
+ * It contains all functions of the Queue ADT.
+ * @author Thomas Reilly - thomas.reilly@ucdconnect.ie
+ */
 public class ArrayQueue<E> implements Queue<E> {
 	//Constant that stores the maximum size a stack can be
 	private final int MAX_SIZE;
@@ -29,6 +34,10 @@ public class ArrayQueue<E> implements Queue<E> {
 		return front == rear;
 	}
 
+	/**
+	 * Enqueues a given element.
+	 * @param e the element to be inserted
+	 */
 	@Override
 	public void enqueue(E e) {
 		rear = (front + size) % MAX_SIZE;
@@ -37,11 +46,19 @@ public class ArrayQueue<E> implements Queue<E> {
 		size++;
 	}
 
+	/**
+	 * Returns the element at the front of the queue.
+	 * @return the element at the front of the queue.
+	 */
 	@Override
 	public E first() {
 		return a[front];
 	}
 
+	/**
+	 * Returns the element at the front of the queue.
+	 * @return the element at the front of the queue.
+	 */
 	@Override
 	public E dequeue() {
 		E temp = a[front];
@@ -56,6 +73,7 @@ public class ArrayQueue<E> implements Queue<E> {
 	}
 
 	public static void main(String[] args) {
+		System.out.println("Creating an array queue of max size 10");
 		ArrayQueue<Integer> aq = new ArrayQueue<>(10);
 
 		aq.enqueue(1);
@@ -65,16 +83,16 @@ public class ArrayQueue<E> implements Queue<E> {
 		System.out.println(aq);
 
 		aq.dequeue();
-		System.out.println(aq);
+		System.out.println("After a dequeue: " + aq);
 
 		aq.enqueue(5);
-		System.out.println(aq);
+		System.out.println("After enqueueing 5: " + aq);
 
-		System.out.println(aq.size());
+		System.out.println("Size: " + aq.size());
 
-		System.out.println(aq.isEmpty());
+		System.out.println("isEmpty: " + aq.isEmpty());
 
-		System.out.println(aq.first());
+		System.out.println("First: " + aq.first());
 		System.out.println(aq);
 	}
 

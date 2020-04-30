@@ -1,11 +1,12 @@
 package projectCode20280.Data_Structures;
 
-/*
- * Map implementation using hash table with separate chaining.
- */
-
 import java.util.ArrayList;
 
+/**
+ * Map implementation using hash table with separate chaining.
+ * Implements all methods of the HashMap ADT.
+ * @author: Thomas Reilly - thomas.reilly@ucdconeect.ie
+ */
 public class ChainHashMap<K, V> extends AbstractHashMap<K, V> {
 	// a fixed capacity array of UnsortedTableMap that serve as buckets
 	private UnsortedTableMap<K, V>[] table; // initialized within createTable
@@ -58,13 +59,13 @@ public class ChainHashMap<K, V> extends AbstractHashMap<K, V> {
 	@Override
 	protected V bucketPut(int h, K k, V v) {
 		UnsortedTableMap<K,V> bucket = table[h];
-		if (bucket == null) {
-			bucket = new UnsortedTableMap<K, V>();
+		if (bucket == null) { // If the bucket doesn't exist, make one.
+			bucket = new UnsortedTableMap<>();
 			table[h] = bucket;
 		}
-		int prev_size = bucket.size();
+		int oldSize = bucket.size();
 		V old = bucket.put(k, v);
-		n -= (prev_size - bucket.size());
+		n -= (oldSize - bucket.size()); // Only increment size if a new element has been created.
 		return old;
 	}
 
@@ -79,12 +80,12 @@ public class ChainHashMap<K, V> extends AbstractHashMap<K, V> {
 	@Override
 	protected V bucketRemove(int h, K k) {
 		UnsortedTableMap<K, V> bucket = table[h];
-		if (bucket == null) {
+		if (bucket == null) { //if the bucket doesn't exist, just return null
 			return null;
 		}
-		int prev_size = bucket.size();
+		int oldSize = bucket.size();
 		V old = bucket.remove(k);
-		n += (bucket.size() - prev_size);
+		n += (bucket.size() - oldSize);
 		return old;
 	}
 
@@ -95,9 +96,9 @@ public class ChainHashMap<K, V> extends AbstractHashMap<K, V> {
 	 */
 	@Override
 	public Iterable<Entry<K, V>> entrySet() {
-		ArrayList<Entry<K,V>> set = new ArrayList<Entry<K,V>>();
+		ArrayList<Entry<K,V>> set = new ArrayList<>();
 		for (UnsortedTableMap<K,V> bucket:table) {
-			if (bucket!=null) {
+			if (bucket != null) { //Don't bother printing empty buckets
 				for (Entry<K,V> entry:bucket.entrySet()) {
 					set.add(entry);
 				}
@@ -114,7 +115,7 @@ public class ChainHashMap<K, V> extends AbstractHashMap<K, V> {
 	public static void main(String[] args) {
 		//Test construction
 		System.out.println("Creating a ChainHashMap");
-		ChainHashMap<Integer, String> m = new ChainHashMap<Integer, String>();
+		ChainHashMap<Integer, String> m = new ChainHashMap<>();
 		System.out.println("ChainHashMap: " + m);
 
 		//Test putting entries
