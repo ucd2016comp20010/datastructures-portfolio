@@ -1,8 +1,7 @@
 # Data Structures Portfolio - datastructures-thomasreilly1011
 A collection of data structures designed and implemented in Java as part of my UCD Computer Science, Data Structures class.
 Included is an array of popular data structures ranging from simple lists, queues and stacks to hashmaps and binary search trees.
-Additionally, there are algorithms that make use of the included data structures to efficiently process tasks. Each of the 
-concrete data structures in the repository include.
+Additionally, there are algorithms that make use of the included data structures to efficiently process tasks.
 
 ## Getting started & Pre Requisites
 To compile or run any of the files in this repository you will need a Java SDK and JRE of 8 or above. To run the JUnit tests, 
@@ -25,7 +24,7 @@ The main data structures included in this portfolio are as follows:
 * Stacks
     * ArrayStack
     * LinkedStack
-* Double Ended Queues
+* Double Ended Queue's
     * Deque
 * Tree's
     * LinkedBinaryTree
