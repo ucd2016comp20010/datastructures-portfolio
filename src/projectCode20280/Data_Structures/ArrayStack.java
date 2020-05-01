@@ -69,9 +69,9 @@ public class ArrayStack<E> implements Stack<E> {
 	@Override
 	public String toString() {
 		String s = "[";
-		for (int i=0; i <= top; i++) {
+		for (int i=top; i >= 0; i--) {
 			s += a[i];
-			if (i != top) {
+			if (i != 0) {
 				s += ", ";
 			}
 		}
